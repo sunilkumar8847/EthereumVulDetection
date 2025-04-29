@@ -1,54 +1,86 @@
-# SmartConVulDetect
-A Python-based Smart Contract Vulnerability Detection system that combines neural networks, interpretable graph features, and expert pattern fusion for enhanced security analysis.
+# Smart Contract Vulnerability Detection System
+
+A comprehensive system for detecting vulnerabilities in smart contracts using a hybrid approach combining pattern-based and graph-based features with deep learning.
 
 ## Overview
 
-The system architecture consists of three main components:
-1. Local Expert Pattern Extraction: Extracts vulnerability-specific patterns from the code
-2. Graph Construction and Normalization: Transforms source code into a global semantic graph
-3. Attentive Multi-Encoder Network: Combines expert patterns and graph features for vulnerability detection with explainable weights
+The system implements a sophisticated vulnerability detection framework that combines:
+- Pattern-based feature extraction
+- Graph-based semantic analysis
+- Deep learning models for vulnerability classification
 
-## Required Packages
-* Python 3 or above
-* TensorFlow 2.0 or above
-* scikit-learn 0.20.2
-* NumPy 1.18 or above
+## Features
 
-### Installation
-```shell
-pip install --upgrade pip
-pip install tensorflow==2.0
-pip install scikit-learn==0.20.2
-pip install numpy==1.18
+- **Hybrid Detection Approach**: Combines pattern-based and graph-based features for comprehensive vulnerability detection
+- **Multiple Vulnerability Types**: Supports detection of various smart contract vulnerabilities
+- **Web Interface**: User-friendly web application for easy interaction
+- **Robust Processing**: Advanced preprocessing and feature extraction
+- **Model Persistence**: Save and load trained models for future use
+
+## Project Structure
+
+```
+.
+├── VulDetector.py          # Main vulnerability detection system
+├── model.py               # Neural network model implementation
+├── preprocessing.py       # Data preprocessing and feature extraction
+├── web_application.py     # Web interface for user interaction
+├── parser.py             # Configuration and parameter handling
+├── pattern_feature/      # Pattern-based features
+├── graph_feature/        # Graph-based features
+├── models/              # Trained model storage
+├── results/            # Detection results
+├── logs/              # System logs
+└── data_example/     # Example smart contracts
 ```
 
-## Dataset
-The system evaluates smart contract vulnerabilities on two benchmark datasets:
-1. Ethereum Smart Contract (ESC)
-   - Focuses on reentrancy and timestamp dependence vulnerability
+## Requirements
+
+- Python 3.x
+- TensorFlow 2.x
+- NumPy
+- scikit-learn
+- Other dependencies listed in requirements.txt
+
+Install dependencies:
+```bash
+pip install -r requirements.txt
+```
 
 ## Usage
-Run the program using:
-```shell
-python3 VulDetector.py
+
+1. **Training the Model**:
+```bash
+python VulDetector.py --vulnerability_type <type> --epochs <num_epochs>
 ```
 
-You can customize parameters using command-line arguments:
-```shell
-python3 VulDetector.py --model EncoderWeight --lr 0.002 --dropout 0.2 --epochs 100 --batch_size 32
+2. **Web Interface**:
+```bash
+python web_application.py
 ```
 
-All configurable parameters can be found in `parser.py`.
+3. **Command Line Options**:
+- `--vulnerability_type`: Type of vulnerability to detect
+- `--epochs`: Number of training epochs
+- `--save_model`: Whether to save the trained model
+- See `parser.py` for full list of options
 
-## Case Study
-Our system provides interpretable vulnerability detection through feature weight analysis. The following visualization shows how the system analyzes a real-world smart contract function for reentrancy vulnerability:
+## Model Architecture
 
+The system uses a hybrid neural network architecture:
+- Graph Neural Network (GNN) layers for processing structural information
+- Pattern feature processing for local vulnerability patterns
+- Attention mechanisms for feature importance
+- Custom layers for specialized processing
 
-The visualization demonstrates:
-- Global graph representation of the code
-- Three local patterns for reentrancy detection
-- Weight distribution between global and local features
-- Clear explanation of the prediction reasoning
+## Data Processing
 
-## Contact
-For questions or support, please create an issue in the repository.
+The system processes smart contracts through:
+1. Pattern feature extraction
+2. Graph-based semantic analysis
+3. Feature normalization and augmentation
+4. Hybrid feature combination
+
+## Contributing
+
+Feel free to submit issues and enhancement requests.
